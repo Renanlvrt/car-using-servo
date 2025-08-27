@@ -38,7 +38,23 @@ def on_forever():
     pass
 basic.forever(on_forever)
 
+def on_button_pressed_b():
+    #pins.servo_write_pin(AnalogPin.P15, 30)
+    #pause(1000)
+    #pins.servo_write_pin(AnalogPin.P15, 160)
+    #basic.pause(100)
+    #motobit.enable(MotorPower.OFF)
+    pins.servo_write_pin(AnalogPin.P15, 160)
+    pause(300)
+    motobit.enable(MotorPower.ON)
+    motobit.set_motor_speed(Motor.LEFT, MotorDirection.REVERSE, 100)
+    motobit.set_motor_speed(Motor.RIGHT, MotorDirection.REVERSE, 300)
+    pause(1000)
+input.on_button_pressed(Button.B, on_button_pressed_b)
+
 def on_button_pressed_a():
+    pins.servo_write_pin(AnalogPin.P15, 90)
+    pause(300)
     motobit.enable(MotorPower.ON)
     motobit.set_motor_speed(Motor.LEFT, MotorDirection.FORWARD, 100)
     motobit.set_motor_speed(Motor.RIGHT, MotorDirection.FORWARD, 100)
@@ -49,13 +65,14 @@ def on_button_pressed_a():
         . # # # .
         . . # . .
         """)
-    pause(100)
-    pins.servo_write_pin(AnalogPin.P15, 37)
-    motobit.enable(MotorPower.OFF)
-    pause(15)
-    motobit.enable(MotorPower.ON)
+    pause(1000)
     motobit.set_motor_speed(Motor.LEFT, MotorDirection.FORWARD, 60)
     motobit.set_motor_speed(Motor.RIGHT, MotorDirection.FORWARD, 60)
+    pins.servo_write_pin(AnalogPin.P15, 37)
+    pause(300)
+    #servos.P0.stop()
+    motobit.set_motor_speed(Motor.LEFT, MotorDirection.FORWARD, 100)
+    motobit.set_motor_speed(Motor.RIGHT, MotorDirection.FORWARD, 100)
     basic.show_leds("""
         . . # . .
         . . # . .
@@ -63,13 +80,25 @@ def on_button_pressed_a():
         . # # # .
         . . # . .
         """)
-    pause(100)
+    pause(1000)
+    motobit.enable(MotorPower.OFF)
+    pins.servo_write_pin(AnalogPin.P15, 160)
+    pause(800)
+    motobit.enable(MotorPower.ON)
+    motobit.set_motor_speed(Motor.LEFT, MotorDirection.REVERSE, 100)
+    motobit.set_motor_speed(Motor.RIGHT, MotorDirection.REVERSE, 100)
+    pause(1500)
+    pins.servo_write_pin(AnalogPin.P15, 90)
+    motobit.enable(MotorPower.OFF)
+
 
 
 
 def on_logo_pressed():
+    motobit.enable(MotorPower.OFF)
     pins.servo_write_pin(AnalogPin.P15, 90)
     basic.pause(100)
+    servos.P0.stop()
     pass
 
 input.on_logo_event(TouchButtonEvent.PRESSED, on_logo_pressed)

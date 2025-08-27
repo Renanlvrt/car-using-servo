@@ -35,13 +35,30 @@ motobit.invert(Motor.Right, true)
 basic.forever(function on_forever() {
     
 })
+input.onButtonPressed(Button.B, function on_button_pressed_b() {
+    // pins.servo_write_pin(AnalogPin.P15, 30)
+    // pause(1000)
+    // pins.servo_write_pin(AnalogPin.P15, 160)
+    // basic.pause(100)
+    // motobit.enable(MotorPower.OFF)
+    pins.servoWritePin(AnalogPin.P15, 160)
+    pause(300)
+    motobit.enable(MotorPower.On)
+    motobit.setMotorSpeed(Motor.Left, MotorDirection.Reverse, 100)
+    motobit.setMotorSpeed(Motor.Right, MotorDirection.Reverse, 300)
+    pause(1000)
+})
 input.onLogoEvent(TouchButtonEvent.Pressed, function on_logo_pressed() {
+    motobit.enable(MotorPower.Off)
     pins.servoWritePin(AnalogPin.P15, 90)
     basic.pause(100)
+    servos.P0.stop()
     
 })
 input.logoIsPressed()
 input.onButtonPressed(Button.A, function on_button_pressed_a() {
+    pins.servoWritePin(AnalogPin.P15, 90)
+    pause(300)
     motobit.enable(MotorPower.On)
     motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 100)
     motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 100)
@@ -52,13 +69,14 @@ input.onButtonPressed(Button.A, function on_button_pressed_a() {
         . # # # .
         . . # . .
         `)
-    pause(100)
-    pins.servoWritePin(AnalogPin.P15, 37)
-    motobit.enable(MotorPower.Off)
-    pause(15)
-    motobit.enable(MotorPower.On)
+    pause(1000)
     motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 60)
     motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 60)
+    pins.servoWritePin(AnalogPin.P15, 37)
+    pause(300)
+    // servos.P0.stop()
+    motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 100)
+    motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 100)
     basic.showLeds(`
         . . # . .
         . . # . .
@@ -66,5 +84,14 @@ input.onButtonPressed(Button.A, function on_button_pressed_a() {
         . # # # .
         . . # . .
         `)
-    pause(100)
+    pause(1000)
+    motobit.enable(MotorPower.Off)
+    pins.servoWritePin(AnalogPin.P15, 160)
+    pause(800)
+    motobit.enable(MotorPower.On)
+    motobit.setMotorSpeed(Motor.Left, MotorDirection.Reverse, 100)
+    motobit.setMotorSpeed(Motor.Right, MotorDirection.Reverse, 100)
+    pause(1500)
+    pins.servoWritePin(AnalogPin.P15, 90)
+    motobit.enable(MotorPower.Off)
 })
