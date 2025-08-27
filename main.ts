@@ -2,7 +2,10 @@ basic.forever(function on_forever() {
     
 })
 input.onButtonPressed(Button.A, function on_button_pressed_a() {
-    servos.P1.setStopOnNeutral(false)
-    servos.P1.setAngle(90)
+    pins.servoWritePin(AnalogPin.P0, 90)
+    
+})
+input.onButtonPressed(Button.B, function on_button_pressed_b() {
+    pins.servoWritePin(AnalogPin.P0, 180)
     
 })
