@@ -27,29 +27,13 @@ input.on_button_pressed(Button.A, on_button_pressed_a)
  */
 // TURN LEFT: pins.servo_write_pin(AnalogPin.P15, 37)
 // TURN RIGHT: pins.servo_write_pin(AnalogPin.P15, 160)
-// neutral: 90
+// neutral: pins.servo_write_pin(AnalogPin.P15, 90)
 // When it starts:
 motobit.enable(MotorPower.Off)
+motobit.invert(Motor.Left, true)
+motobit.invert(Motor.Right, true)
 basic.forever(function on_forever() {
-    motobit.enable(MotorPower.Off)
-})
-function on_button_pressed_a() {
-    motobit.enable(MotorPower.On)
-    motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 100)
-    basic.pause(500)
-    motobit.enable(MotorPower.Off)
-    pins.servoWritePin(AnalogPin.P15, 37)
-    basic.pause(100)
-    motobit.enable(MotorPower.Off)
-    motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 50)
-    basic.pause(100)
-    motobit.enable(MotorPower.Off)
-}
-
-// def logo_is_pressed():
-input.onButtonPressed(Button.B, function on_button_pressed_b() {
-    pins.servoWritePin(AnalogPin.P15, 160)
-    basic.pause(100)
+    
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function on_logo_pressed() {
     pins.servoWritePin(AnalogPin.P15, 90)
@@ -57,5 +41,30 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function on_logo_pressed() {
     
 })
 input.logoIsPressed()
-input.onButtonPressed(Button.A, on_button_pressed_a)
-input.onButtonPressed(Button.A, on_button_pressed_a)
+input.onButtonPressed(Button.A, function on_button_pressed_a() {
+    motobit.enable(MotorPower.On)
+    motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 100)
+    motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 100)
+    basic.showLeds(`
+        . . # . .
+        . . # . .
+        # . # . #
+        . # # # .
+        . . # . .
+        `)
+    pause(100)
+    pins.servoWritePin(AnalogPin.P15, 37)
+    motobit.enable(MotorPower.Off)
+    pause(15)
+    motobit.enable(MotorPower.On)
+    motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 60)
+    motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 60)
+    basic.showLeds(`
+        . . # . .
+        . . # . .
+        # . # . #
+        . # # # .
+        . . # . .
+        `)
+    pause(100)
+})
