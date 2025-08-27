@@ -2,7 +2,7 @@ basic.forever(function on_forever() {
     motobit.enable(MotorPower.Off)
 })
 function on_button_pressed_a() {
-    pins.servoWritePin(AnalogPin.P15, 20)
+    pins.servoWritePin(AnalogPin.P15, 37)
     basic.pause(100)
 }
 

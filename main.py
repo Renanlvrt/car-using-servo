@@ -3,7 +3,7 @@ def on_forever():
 basic.forever(on_forever)
 
 def on_button_pressed_a():
-    pins.servo_write_pin(AnalogPin.P15, 20)
+    pins.servo_write_pin(AnalogPin.P15, 37)
     basic.pause(100)
 
 #def logo_is_pressed():
