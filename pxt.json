@@ -6,7 +6,8 @@
         "radio": "*",
         "microphone": "*",
         "servo": "*",
-        "motobit": "github:sparkfun/pxt-moto-bit#v0.0.4"
+        "motobit": "github:sparkfun/pxt-moto-bit#v0.0.4",
+        "pxt-sonar": "github:microsoft/pxt-sonar#v0.0.6"
     },
     "files": [
         "main.blocks",

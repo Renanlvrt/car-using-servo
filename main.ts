@@ -32,6 +32,7 @@ input.on_button_pressed(Button.A, on_button_pressed_a)
 motobit.enable(MotorPower.Off)
 motobit.invert(Motor.Left, true)
 motobit.invert(Motor.Right, true)
+pins.servoWritePin(AnalogPin.P15, 90)
 basic.forever(function on_forever() {
     
 })
@@ -53,10 +54,12 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function on_logo_pressed() {
     pins.servoWritePin(AnalogPin.P15, 90)
     basic.pause(100)
     servos.P0.stop()
+    // sonar.ping(DigitalPin.P12, DigitalPin.P14, PingUnit.MICRO_SECONDS)
     
 })
 input.logoIsPressed()
 input.onButtonPressed(Button.A, function on_button_pressed_a() {
+    servos.P0.setAngle(90)
     pins.servoWritePin(AnalogPin.P15, 90)
     pause(300)
     motobit.enable(MotorPower.On)
@@ -95,3 +98,14 @@ input.onButtonPressed(Button.A, function on_button_pressed_a() {
     pins.servoWritePin(AnalogPin.P15, 90)
     motobit.enable(MotorPower.Off)
 })
+// input.on_button_pressed(Button.B, on_button_pressed_b)
+/** def on_button_a():
+    pins.servo_write_pin(AnalogPin.P16, 40)
+    pause(1000)
+    pins.servo_write_pin(AnalogPin.P16, 90)
+    led.plot(0, 0)
+
+
+
+input.on_button_pressed(Button.A, on_button_a)
+ */
